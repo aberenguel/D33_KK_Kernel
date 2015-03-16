@@ -242,7 +242,8 @@ int mt_bt_power_on(void)
 	   
          if(gpio_is_valid(pdata->rts_gpio.io)) {
              printk(KERN_INFO MODULE_TAG "mt_bt_power_on rts iomux\n");
-             rk_mux_api_set(pdata->rts_gpio.iomux.name, pdata->rts_gpio.iomux.fgpio);
+             gpio_request(pdata->rts_gpio.io, NULL);
+			 rk_mux_api_set(pdata->rts_gpio.iomux.name, pdata->rts_gpio.iomux.fgpio);
              gpio_direction_output(pdata->rts_gpio.io, 0);
          }	   
 	    

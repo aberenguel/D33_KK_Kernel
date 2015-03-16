@@ -40,6 +40,13 @@
 #define DBG(x...)
 #endif
 
+struct rk29_button_light_info{
+	u32 led_on_pin;
+	u32 led_on_level;
+	int (*io_init)(void);
+	int (*io_deinit)(void);
+};
+
 static int rk29_button_light_value = 0;
 struct backlight_device * rk29_button_light_device;
 
