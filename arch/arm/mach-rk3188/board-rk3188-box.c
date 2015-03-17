@@ -137,7 +137,7 @@ static struct spi_board_info board_spi_devices[] = {
 #define PWM_MODE	  PWM3
 #define PWM_EFFECT_VALUE  1
 
-//#define LCD_DISP_ON_PIN //screen power off?
+#define LCD_DISP_ON_PIN //screen power off?
 
 #ifdef  LCD_DISP_ON_PIN
 #define BL_EN_PIN         RK30_PIN0_PA2
