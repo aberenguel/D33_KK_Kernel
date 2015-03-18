@@ -188,13 +188,13 @@ void request_suspend_state(suspend_state_t new_state)
 			tm.tm_year + 1900, tm.tm_mon + 1, tm.tm_mday,
 			tm.tm_hour, tm.tm_min, tm.tm_sec, ts.tv_nsec);
 	}
-	if(new_state != PM_SUSPEND_ON){
-		gpio_direction_output(RK30_PIN0_PB6, GPIO_LOW);
-		gpio_direction_output(RK30_PIN0_PB7, GPIO_HIGH);
-	}else{
-		gpio_direction_output(RK30_PIN0_PB6, GPIO_HIGH);
-		gpio_direction_output(RK30_PIN0_PB7, GPIO_LOW);
-	}
+// 	if(new_state != PM_SUSPEND_ON){
+// 		gpio_direction_output(RK30_PIN0_PB6, GPIO_LOW);
+// 		gpio_direction_output(RK30_PIN0_PB7, GPIO_HIGH);
+// 	}else{
+// 		gpio_direction_output(RK30_PIN0_PB6, GPIO_HIGH);
+// 		gpio_direction_output(RK30_PIN0_PB7, GPIO_LOW);
+// 	}
 	if (!old_sleep && new_state != PM_SUSPEND_ON) {
 		state |= SUSPEND_REQUESTED;
 		queue_work(suspend_work_queue, &early_suspend_work);
