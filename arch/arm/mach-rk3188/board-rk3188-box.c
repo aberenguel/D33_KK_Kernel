@@ -990,7 +990,7 @@ static struct rfkill_rk_platform_data rfkill_rk_platdata = {
 		},
 
 	.reset_gpio         = { // BT_RST
-		.io             = INVALID_GPIO, // set io to INVALID_GPIO for disable it
+		.io             = RK30_PIN3_PD1, // set io to INVALID_GPIO for disable it
 		.enable         = GPIO_LOW,
 		}, 
 
@@ -1008,7 +1008,7 @@ static struct rfkill_rk_platform_data rfkill_rk_platdata = {
 #if defined(CONFIG_AP6210_ALT)
 			.io      = RK30_PIN3_PC7,
 #else
-			.io      = INVALID_GPIO, 
+			.io      = RK30_PIN0_PA5, 
 			//INVALID_GPIO, 
 #endif
 			.enable     = GPIO_LOW,      // GPIO_LOW for falling, set 0 for rising
