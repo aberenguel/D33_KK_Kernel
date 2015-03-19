@@ -2302,7 +2302,7 @@ static struct cpufreq_frequency_table dvfs_arm_table[] = {
         {.frequency = 1008 * 1000,      .index = CONFIG_RK_CPU_1008_VOLT * 1000},
 #endif
 #ifdef CONFIG_RK_CPU_1200
-        {.frequency = 1200 * 1000,      .index = CONFIG_RK_CPU_1200_VOLT * 1000},
+        {.frequency = 1248 * 1000,      .index = CONFIG_RK_CPU_1200_VOLT * 1000},
 #endif
 #ifdef CONFIG_RK_CPU_1416
         {.frequency = 1416 * 1000,      .index = CONFIG_RK_CPU_1416_VOLT * 1000},
