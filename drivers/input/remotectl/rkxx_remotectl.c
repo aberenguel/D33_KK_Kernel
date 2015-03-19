@@ -81,7 +81,7 @@ struct rkxx_remotectl_drvdata {
 
 
 
-//ÌØÊâ¹¦ÄÜ¼üÖµ¶¨Òå
+//â¹¦Ü¼Öµ
     //193      //photo
     //194      //video
     //195      //music
@@ -190,6 +190,49 @@ static struct rkxx_remote_key_table remote_key_table_sunchip_202[] = {
     {0xE8, KEY_SEARCH},     // search
 };
 
+static struct rkxx_remote_key_table remote_key_table_q7[] = {
+   
+  {0x00, KEY_POWER},
+  {0x30, KEY_MUTE}, 
+
+  {0x80, KEY_F1},    // Media
+  {0xa0, KEY_F3},    // Tv/Radio
+  {0x90, KEY_F2},    // Browser
+  {0xb0, KEY_F4},    // Apps
+
+  {0x40, KEY_VOLUMEDOWN},
+  {0x70, KEY_VOLUMEUP},
+  {0x60, KEY_PREVIOUSSONG},  // Previous
+  {0x50, KEY_NEXTSONG},      // Next
+
+  {0xc0, KEY_HOMEPAGE},   
+  {0xf0, KEY_BACK},
+
+  {0xe0, KEY_UP},	
+  {0x22, KEY_DOWN},
+  {0x08, KEY_LEFT},
+  {0x48, KEY_RIGHT},
+  {0x88, KEY_ENTER},        // OK
+
+  {0x02, KEY_MENU},
+  {0x32, 388},              // Mouse switch
+
+  {0x82, KEY_1},          
+  {0xa2, KEY_2},      
+  {0xb2, KEY_3},
+  {0x42, KEY_4},     
+  {0x62, KEY_5},
+  {0x72, KEY_6}, 
+  {0xc2, KEY_7},
+  {0xe2, KEY_8},
+  {0xf2, KEY_9},
+
+  {0x12, KEY_PLAYPAUSE},     // Caps lock
+  {0x92, KEY_0}, 
+  {0x52, KEY_BACKSPACE}, 
+
+};
+
 extern suspend_state_t get_suspend_state(void);
 
 
@@ -221,6 +264,11 @@ static struct rkxx_remotectl_button remotectl_button[] =
        .nbuttons =  16, 
        .key_table = &remote_key_table_df[0],
     },
+    {  
+       .usercode = 0x33b8, 
+       .nbuttons =  31, 
+       .key_table = &remote_key_table_q7[0],
+    },
 };
 
 
@@ -242,7 +290,7 @@ static int remotectl_keycode_lookup(struct rkxx_remotectl_drvdata *ddata)
 {	
     int i;	
     unsigned char keyData = ((ddata->scanData >> 8) & 0xff);
-
+    //printk("remotectl: userCode=[0x%x],keyCode=[0x%x]\n", remotectl_button[ddata->keybdNum].usercode, keyData);
     for (i = 0; i < remotectl_button[ddata->keybdNum].nbuttons; i++){
         if (remotectl_button[ddata->keybdNum].key_table[i].scanCode == keyData){			
             ddata->keycode = remotectl_button[ddata->keybdNum].key_table[i].keyCode;
